@@ -285,13 +285,13 @@ static uint32_t rgb_scale(uint32_t rgb, float a)
     return (r<<16) | (g<<8) | b;
 }
 
-void apriltag_detector_remove_family(apriltag_detector_t *td, apriltag_family_t *fam)
+__declspec(dllexport) void apriltag_detector_remove_family(apriltag_detector_t *td, apriltag_family_t *fam)
 {
     quick_decode_uninit(fam);
     zarray_remove_value(td->tag_families, &fam, 0);
 }
 
-void apriltag_detector_add_family(apriltag_detector_t *td, apriltag_family_t *fam)
+__declspec(dllexport) void apriltag_detector_add_family(apriltag_detector_t *td, apriltag_family_t *fam)
 {
     zarray_add(td->tag_families, &fam);
 
@@ -302,7 +302,7 @@ void apriltag_detector_add_family(apriltag_detector_t *td, apriltag_family_t *fa
         quick_decode_init(fam, 2);
 }
 
-void apriltag_detector_clear_families(apriltag_detector_t *td)
+__declspec(dllexport) void apriltag_detector_clear_families(apriltag_detector_t *td)
 {
     for (int i = 0; i < zarray_size(td->tag_families); i++) {
         apriltag_family_t *fam;
@@ -324,7 +324,7 @@ void apriltag_quad_thresh_defaults(struct apriltag_quad_thresh_params* qtp) {
 
 }
 
-void apriltag_detector_enable_quad_contours(apriltag_detector_t* td,
+__declspec(dllexport) void apriltag_detector_enable_quad_contours(apriltag_detector_t* td,
                                             int enable) {
 
   td->quad_contours = enable;
@@ -365,7 +365,7 @@ __declspec(dllexport) apriltag_detector_t *apriltag_detector_create()
     return td;
 }
 
-void apriltag_detector_destroy(apriltag_detector_t *td)
+__declspec(dllexport) void apriltag_detector_destroy(apriltag_detector_t *td)
 {
     timeprofile_destroy(td->tp);
     workerpool_destroy(td->wp);
@@ -1004,7 +1004,7 @@ static void quad_decode_task(void *_u)
     }
 }
 
-void apriltag_detection_destroy(apriltag_detection_t *det)
+__declspec(dllexport) void apriltag_detection_destroy(apriltag_detection_t *det)
 {
     if (det == NULL)
         return;
@@ -1387,7 +1387,7 @@ __declspec(dllexport) zarray_t *apriltag_detector_detect(apriltag_detector_t *td
 
 
 // Call this method on each of the tags returned by apriltag_detector_detect
-void apriltag_detections_destroy(zarray_t *detections)
+__declspec(dllexport) void apriltag_detections_destroy(zarray_t *detections)
 {
     for (int i = 0; i < zarray_size(detections); i++) {
         apriltag_detection_t *det;
