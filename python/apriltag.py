@@ -187,7 +187,7 @@ argparse.ArgumentParser on which you have called add_arguments.
                  refine_decode=False,
                  refine_pose=False,
                  debug=False,
-                 quad_contours=True):
+                 quad_contours=False):
 
         self.families = families
         self.border = int(border)
@@ -250,7 +250,7 @@ Detector.
 
     parser.add_argument('-c', dest='quad_contours', default=False,
                         action='store_true',
-                        help='Use new contour-based quad detection')
+                        help='Use new contour-based quad detection(There is bug when this is True)')
 
 
 ######################################################################
@@ -273,11 +273,11 @@ library used by ctypes.
         self.options = options
 
         # detect OS to get extension for DLL
-        uname0 = os.uname()[0]
-        if uname0 == 'Darwin':
-            extension = '.dylib'
-        else:
-            extension = '.so' # TODO test on windows?
+        #uname0 = os.uname()[0]
+        #if uname0 == 'Darwin':
+        #    extension = '.dylib'
+        #else:
+        extension = '.dll' # TODO test on windows?
 
         filename = 'libapriltag'+extension
 
@@ -289,6 +289,10 @@ library used by ctypes.
             if os.path.exists(relpath):
                 self.libc = ctypes.CDLL(relpath)
                 break
+
+        if self.libc is None:
+            fpath_installed = os.path.dirname(__file__) + "/" + filename
+            self.libc = ctypes.CDLL(fpath_installed)
 
         # if full path not found just try opening the raw filename;
         # this should search whatever paths dlopen is supposed to
