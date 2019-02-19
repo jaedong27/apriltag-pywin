@@ -1,6 +1,7 @@
 #include "box.h"
 #include "image_u32.h"
-#include <alloca.h>
+//#include <alloca.h>
+#include <malloc.h>
 
 #include <stdlib.h>
 #include <string.h>
@@ -20,7 +21,13 @@ int my_memalign(void** pptr, size_t alignment, size_t size) {
 
 #else
 
-#define my_memalign posix_memalign
+//#define my_memalign posix_memalign
+//https://stackoverflow.com/questions/33696092/whats-the-correct-replacement-for-posix-memalign-in-windows
+int my_memalign(void** pptr, size_t alignment, size_t size) {
+  *pptr = _aligned_malloc(size, alignment);
+  int fail = (!*pptr);
+  return fail;
+}
 
 #endif
 
