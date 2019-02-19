@@ -60,7 +60,7 @@ void zarray_vmap(zarray_t *za, void (*f)())
     }
 }
 
-void zarray_get(const zarray_t *za, int idx, void *p)
+__declspec(dllexport) void zarray_get(const zarray_t *za, int idx, void *p)
 {
     assert(za != NULL);
     assert(p != NULL);

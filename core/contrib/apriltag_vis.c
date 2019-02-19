@@ -166,7 +166,7 @@ void apriltag_vis_detection(const apriltag_detection_t* detection,
 
 }
 
-void apriltag_vis_detections(zarray_t* detections,
+__declspec(dllexport) void apriltag_vis_detections(zarray_t* detections,
                              image_u8_t* image) {
 
   for (int i = 0; i < zarray_size(detections); i++) {

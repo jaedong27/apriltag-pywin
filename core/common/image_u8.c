@@ -56,7 +56,7 @@ static int iclamp(int v, int min, int max)
     return v;
 }
 
-image_u8_t *image_u8_create(unsigned int width, unsigned int height)
+__declspec(dllexport) image_u8_t *image_u8_create(unsigned int width, unsigned int height)
 {
     return image_u8_create_alignment(width, height, DEFAULT_ALIGNMENT);
 }
@@ -91,7 +91,7 @@ image_u8_t *image_u8_copy(const image_u8_t *in)
     return copy;
 }
 
-void image_u8_destroy(image_u8_t *im)
+__declspec(dllexport) void image_u8_destroy(image_u8_t *im)
 {
     if (!im)
         return;
@@ -164,7 +164,7 @@ image_u8_t *image_u8_create_from_f32(image_f32_t *fim)
 }
 
 
-int image_u8_write_pnm(const image_u8_t *im, const char *path)
+__declspec(dllexport) int image_u8_write_pnm(const image_u8_t *im, const char *path)
 {
     FILE *f = fopen(path, "wb");
     int res = 0;

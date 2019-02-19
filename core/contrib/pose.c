@@ -412,7 +412,7 @@ double reprojection_objective(const double corners_meas[][2],
 
 }
 
-matd_t* pose_from_homography(const matd_t* H,
+__declspec(dllexport) matd_t* pose_from_homography(const matd_t* H,
                              double fx, double fy, double cx, double cy,
                              double tagsize,
                              double z_sign,

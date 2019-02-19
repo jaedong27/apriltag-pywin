@@ -334,10 +334,10 @@ void apriltag_detector_enable_quad_contours(apriltag_detector_t* td,
   } else {
     apriltag_quad_thresh_defaults(&td->qtp);
   }
-  
+
 }
 
-apriltag_detector_t *apriltag_detector_create()
+__declspec(dllexport) apriltag_detector_t *apriltag_detector_create()
 {
     apriltag_detector_t *td = (apriltag_detector_t*) calloc(1, sizeof(apriltag_detector_t));
 
@@ -1013,7 +1013,7 @@ void apriltag_detection_destroy(apriltag_detection_t *det)
     free(det);
 }
 
-zarray_t *apriltag_detector_detect(apriltag_detector_t *td, image_u8_t *im_orig)
+__declspec(dllexport) zarray_t *apriltag_detector_detect(apriltag_detector_t *td, image_u8_t *im_orig)
 {
     if (zarray_size(td->tag_families) == 0) {
         zarray_t *s = zarray_create(sizeof(apriltag_detection_t*));

@@ -45,7 +45,7 @@ either expressed or implied, of the FreeBSD Project.
 // to ease creating mati, matf, etc. in the future.
 #define TYPE double
 
-matd_t *matd_create(int rows, int cols)
+__declspec(dllexport) matd_t *matd_create(int rows, int cols)
 {
     assert(rows >= 0);
     assert(cols >= 0);
