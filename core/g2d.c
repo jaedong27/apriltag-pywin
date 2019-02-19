@@ -760,8 +760,8 @@ int main(int argc, char *argv[])
 
         for (int i = 0; i < niters; i++) {
             double q[2];
-            q[0] = 10.0f * random() / RAND_MAX - 2;
-            q[1] = 10.0f * random() / RAND_MAX - 2;
+            q[0] = 10.0f * rand() / RAND_MAX - 2;
+            q[1] = 10.0f * rand() / RAND_MAX - 2;
 
             g2d_polygon_contains_point(polyE, q);
         }
@@ -770,8 +770,8 @@ int main(int argc, char *argv[])
 
         for (int i = 0; i < niters; i++) {
             double q[2];
-            q[0] = 10.0f * random() / RAND_MAX - 2;
-            q[1] = 10.0f * random() / RAND_MAX - 2;
+            q[0] = 10.0f * rand() / RAND_MAX - 2;
+            q[1] = 10.0f * rand() / RAND_MAX - 2;
 
             g2d_polygon_contains_point_ref(polyE, q);
         }
@@ -780,8 +780,8 @@ int main(int argc, char *argv[])
 
         for (int i = 0; i < niters; i++) {
             double q[2];
-            q[0] = 10.0f * random() / RAND_MAX - 2;
-            q[1] = 10.0f * random() / RAND_MAX - 2;
+            q[0] = 10.0f * rand() / RAND_MAX - 2;
+            q[1] = 10.0f * rand() / RAND_MAX - 2;
 
             int v0 = g2d_polygon_contains_point(polyE, q);
             int v1 = g2d_polygon_contains_point_ref(polyE, q);
@@ -874,8 +874,8 @@ double p[][2] =  { { 0, 0},
 
          for (int j = 0; j < 100; j++) {
              double q[2];
-             q[0] = 10.0f * random() / RAND_MAX - 2;
-             q[1] = 10.0f * random() / RAND_MAX - 2;
+             q[0] = 10.0f * rand() / RAND_MAX - 2;
+             q[1] = 10.0f * rand() / RAND_MAX - 2;
 
              zarray_add(points, q);
          }

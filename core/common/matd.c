@@ -1695,14 +1695,14 @@ matd_t *matd_solve(matd_t *A, matd_t *b)
 
 static int randi()
 {
-    int v = random()&31;
+    int v = rand()&31;
     v -= 15;
     return v;
 }
 
 static double randf()
 {
-    double v = 1.0 *random() / RAND_MAX;
+    double v = 1.0 *rand() / RAND_MAX;
     return 2*v - 1;
 }
 
@@ -1718,8 +1718,8 @@ int main(int argc, char *argv[])
             if (iter % 1000 == 0)
                 printf("%d\n", iter);
 
-            int m = 1 + (random()%(maxdim-1));
-            int n = 1 + (random()%(maxdim-1));
+            int m = 1 + (rand()%(maxdim-1));
+            int n = 1 + (rand()%(maxdim-1));
 
             for (int i = 0; i < m*n; i++)
                 A->data[i] = randi();

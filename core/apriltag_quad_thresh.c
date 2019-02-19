@@ -1709,7 +1709,7 @@ zarray_t *apriltag_quad_thresh(apriltag_detector_t *td, image_u8_t *im)
 
                 if (color == 0) {
                     const int bias = 20;
-                    color = bias + (random() % (255-bias));
+                    color = bias + (rand() % (255-bias));
                     colors[v] = color;
                 }
 
@@ -1793,7 +1793,7 @@ zarray_t *apriltag_quad_thresh(apriltag_detector_t *td, image_u8_t *im)
             int bias = 100;
 
             for (int i = 0; i < 3; i++)
-                rgb[i] = bias + (random() % (255-bias));
+                rgb[i] = bias + (rand() % (255-bias));
 
             fprintf(f, "%f %f %f setrgbcolor\n", rgb[0]/255.0f, rgb[1]/255.0f, rgb[2]/255.0f);
             fprintf(f, "%.15f %.15f moveto %.15f %.15f lineto %.15f %.15f lineto %.15f %.15f lineto %.15f %.15f lineto stroke\n",
