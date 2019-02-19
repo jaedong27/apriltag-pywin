@@ -51,13 +51,13 @@ int64_t utime_get_useconds(int64_t v)
 void utime_to_timeval(int64_t v, struct timeval *tv)
 {
     tv->tv_sec  = (time_t) utime_get_seconds(v);
-    tv->tv_usec = (suseconds_t) utime_get_useconds(v);
+    tv->tv_usec = (useconds_t) utime_get_useconds(v);
 }
 
 void utime_to_timespec(int64_t v, struct timespec *ts)
 {
     ts->tv_sec  = (time_t) utime_get_seconds(v);
-    ts->tv_nsec = (suseconds_t) utime_get_useconds(v)*1000;
+    ts->tv_nsec = (useconds_t) utime_get_useconds(v)*1000;
 }
 
 int32_t timeutil_usleep(int64_t useconds)

@@ -1092,6 +1092,7 @@ zarray_t *apriltag_detector_detect(apriltag_detector_t *td, image_u8_t *im_orig)
     zarray_t* quads = 0;
 
     if (td->quad_contours) {
+      // It works
       quads = apriltag_quad_contour(td, quad_im);
     } else {
       quads = apriltag_quad_thresh(td, quad_im);
