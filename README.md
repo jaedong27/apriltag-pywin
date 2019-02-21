@@ -14,7 +14,7 @@ Dependencies
 
 Building(On Only Window)
 ========
-You should build on mingw64.
+You should build on mingw64.(Visual studio doesn't support Variable-Length Array(VLA))
 
     cd /path/to/apriltag
     cd core
