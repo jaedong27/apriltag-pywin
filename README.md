@@ -11,7 +11,8 @@ Dependencies
 ============
 
   - OpenCV (optional)
-
+  - Python 3.6
+ 
 Building(On Only Window)
 ========
 You should build on mingw64.(Visual studio doesn't support Variable-Length Array(VLA))
